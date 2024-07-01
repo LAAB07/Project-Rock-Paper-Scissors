@@ -23,3 +23,13 @@ function getComputerChoice(){
 
 console.log(getComputerChoice());
 
+/* This function gets the option from the user using the prompt method */
+
+function getHumanChoice(){
+
+    let userChoice = prompt("Please choice your option: rock? paper? scissors?");
+    return userChoice;
+}
+
+console.log(getHumanChoice());
+
