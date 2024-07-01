@@ -1,3 +1,6 @@
+let humanScore = 0;
+let computerScore = 0;
+
 /* This function calculates a random number with Math.random and 
 use it to returns rock, paper or scissors with if else
 conditions */
@@ -32,4 +35,8 @@ function getHumanChoice(){
 }
 
 console.log(getHumanChoice());
+
+console.log(humanScore);
+
+console.log(computerScore);
 
