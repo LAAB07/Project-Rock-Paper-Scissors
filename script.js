@@ -2,8 +2,7 @@ let humanScore = 0;
 let computerScore = 0;
 
 /* This function calculates a random number with Math.random and 
-use it to returns rock, paper or scissors with if else
-conditions */
+use it to return rock, paper or scissors with if else conditions */
 
 function getComputerChoice(){
 
@@ -30,16 +29,40 @@ function getComputerChoice(){
 
 function getHumanChoice(){
 
-    let userChoice = prompt("Please choice your option: rock? paper? scissors?");
-    return userChoice;
+    let userChoice;
+
+    userChoice = prompt("Please choice your option.\nRock? Paper? Scissors?\nYou can type UPPERCASE, lowercase or Capitalized Case");
+    
+    // console.log(userChoice);
+
+    if (userChoice === null || userChoice === "" || userChoice === undefined){
+            alert("You must enter a valid option into the prompt box!\nCannot be empty");
+            return getHumanChoice();
+    } else if (!/^[a-zA-Z]+$/.test(userChoice)){
+            alert("Please only use letters!\nYour input was: " + userChoice);
+            return getHumanChoice();
+    } else {
+            let userChoiceFix = userChoice.at(0).toUpperCase() + userChoice.slice(1).toLowerCase();
+            if (userChoiceFix === "Rock" || userChoiceFix === "Paper" || userChoiceFix === "Scissors"){
+                return userChoiceFix;
+            } else {
+                alert("You must enter a valid option into the prompt box!\nYour input was: " + userChoiceFix);
+                return getHumanChoice();    
+            }
+
+    }
 
 }
 
 // console.log(getHumanChoice());
 
-console.log(humanScore);
+// console.log(humanScore);
 
-console.log(computerScore);
+// console.log(computerScore);
+
+/* This function gets the human's choice and the computer's choice and
+declares a winner from both and finally increments the winner's score. If
+this is a draw, nobody wins and consequently, the score still remain the same */
 
 
 function playRound(humanChoice, computerChoice){
@@ -85,11 +108,11 @@ const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection);
 
-console.log("The choice from user was: " + humanSelection);
+console.log("Your choice was: " + humanSelection);
 
 console.log("The choice from computer was: " + computerSelection);
 
-console.log("Score for user is: " + humanScore);
+console.log("Your score is: " + humanScore);
 
 console.log("Score for computer is: " + computerScore);
 
