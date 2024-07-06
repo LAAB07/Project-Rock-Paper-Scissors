@@ -1,39 +1,28 @@
-let humanScore = 0;
-let computerScore = 0;
-
-/* This function calculates a random number with Math.random and 
-use it to return rock, paper or scissors with if else conditions */
+/* This function calculates a random number with Math.random and use it to return rock, paper or scissors with if-else conditions */
 
 function getComputerChoice(){
 
     let option = Math.floor(Math.random() * 100);
 
     if(option <=33){
-        // option = "Rock";
         return "Rock";
     }
     else if(option <= 66){
-        // option = "Paper";
         return "Paper";
     }
     else{
-        // option = "Scissors";
         return "Scissors";
     }
 
 }
 
-// console.log(getComputerChoice());
-
-/* This function gets the option from the user using the prompt method */
+/* This function gets the option from the user using the prompt method and apply some validations for the input in order to get a correct option */
 
 function getHumanChoice(){
 
     let userChoice;
 
     userChoice = prompt("Please choice your option.\nRock? Paper? Scissors?\nYou can type UPPERCASE, lowercase or Capitalized Case");
-    
-    // console.log(userChoice);
 
     if (userChoice === null || userChoice === "" || userChoice === undefined){
             alert("You must enter a valid option into the prompt box!\nCannot be empty");
@@ -54,67 +43,106 @@ function getHumanChoice(){
 
 }
 
-// console.log(getHumanChoice());
+/* Declaration of two variables that will be receiving the return values from getComputerChoice and getHumanChoice functions */ 
 
-// console.log(humanScore);
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
 
-// console.log(computerScore);
+/* This function allows to play the game by 5 rounds, keeps track of the scores(human and computer) and declares a winner at the end or a draw if apply */
 
-/* This function gets the human's choice and the computer's choice and
-declares a winner from both and finally increments the winner's score. If
-this is a draw, nobody wins and consequently, the score still remain the same */
+function playGame(humanChoice, computerChoice){
 
+    let humanScore = 0;
+    let computerScore = 0;
 
-function playRound(humanChoice, computerChoice){
+    let round = 1;
 
-    if(humanChoice==="Rock" && computerChoice==="Scissors"){
+    while(round<=5){
+
+        console.log("This is round number #" + round);
+
+        if(humanChoice==="Rock" && computerChoice==="Scissors"){
         console.log("You win! Rock beats Scissors");
+        console.log("");
         humanScore++;
-    }
+        }
 
-    else if(humanChoice==="Rock" && computerChoice==="Paper"){
+        else if(humanChoice==="Rock" && computerChoice==="Paper"){
         console.log("You lose! Paper beats Rock");
+        console.log("");
         computerScore++;
-    }
+        }
 
-    else if(humanChoice==="Paper" && computerChoice==="Rock"){
+        else if(humanChoice==="Paper" && computerChoice==="Rock"){
         console.log("You Win! Paper beats Rock");
+        console.log("");
         humanScore++;
-    }
+        }
 
-    else if(humanChoice==="Paper" && computerChoice==="Scissors"){
+        else if(humanChoice==="Paper" && computerChoice==="Scissors"){
         console.log("You lose! Scissors beats Paper");
+        console.log("");
         computerScore++;
-    }
+        }
 
-    else if(humanChoice==="Scissors" && computerChoice==="Paper"){
+        else if(humanChoice==="Scissors" && computerChoice==="Paper"){
         console.log("You Win! Scissors beats Paper");
+        console.log("");
         humanScore++;
-    }
+        }
 
-    else if(humanChoice==="Scissors" && computerChoice==="Rock"){
+        else if(humanChoice==="Scissors" && computerChoice==="Rock"){
         console.log("You lose! Rock beats Scissors");
+        console.log("");
         computerScore++;
-    }
+        }
 
-    else{
+        else{
         console.log("This is a draw! Nobody wins")
+        console.log("");
+        }
+
+        console.log("Your choice was: " + humanChoice);
+
+        console.log("The choice from computer was: " + computerChoice);
+
+        console.log("");
+    
+        console.log("Your score is: " + humanScore);
+    
+        console.log("Score for computer is: " + computerScore);
+
+        console.log("");
+
+        round++;
+
+        if(round===6){
+
+            if(humanScore>computerScore){
+                console.log("Congratulations. You are the winner!")
+            } else if(humanScore<computerScore){
+                console.log("You lost. Plase try again.")
+            } else {
+                console.log("This is a draw. Try again.")
+            }
+
+        } else {
+            humanChoice = getHumanChoice();
+            computerChoice = getComputerChoice();
+        }
+
     }
 
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+console.log("Lets play some rock, paper, scissors game. The winner will be the one who gets the highest score after playing 5 rounds");
 
-playRound(humanSelection, computerSelection);
+console.log("");
 
-console.log("Your choice was: " + humanSelection);
+playGame(humanSelection, computerSelection);
 
-console.log("The choice from computer was: " + computerSelection);
 
-console.log("Your score is: " + humanScore);
 
-console.log("Score for computer is: " + computerScore);
 
 
 
