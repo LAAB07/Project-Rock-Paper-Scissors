@@ -67,7 +67,7 @@ function getComputerChoice(){
 /* Declaration of two variables that will be receiving the return values from getComputerChoice and getHumanChoice functions */ 
 
 // const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+//const computerSelection = getComputerChoice();
 
 /* This function allows to play the game by 5 rounds, keeps track of the scores(human and computer) and declares a winner at the end or a draw if apply */
 
@@ -83,22 +83,24 @@ function playGame(humanChoice, computerChoice){
 
     humanChoice = userChoice;
 
+    computerChoice = getComputerChoice();
+
     console.log("Please select your option");
 
     // let round = 1;
 
     // while(round<=5){
 
-        console.log("%cThis is round number #" + round, "color: blue");
-        const showRound = document.createElement("p");
+        //console.log("%cThis is round number #" + round, "color: blue");
+        //const showRound = document.createElement("p");
         const showWinner = document.createElement("p");
         const showUser = document.createElement("p");
         const showPC = document.createElement("p");
         const showUserScore = document.createElement("p");
         const showPcScore = document.createElement("p");
         const showFinalWinner = document.createElement("p");
-        showRound.textContent = "This is round number: " + round;
-        container.appendChild(showRound);  
+        //showRound.textContent = "This is round number: " + round;
+        //container.appendChild(showRound);  
         container.appendChild(showWinner);
         container.appendChild(showUser);  
         container.appendChild(showPC);
@@ -194,7 +196,7 @@ function playGame(humanChoice, computerChoice){
 
 }
 
-playGame(humanSelection, computerSelection);
+//playGame(humanSelection, computerSelection);
 
 
 
