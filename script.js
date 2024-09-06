@@ -1,3 +1,7 @@
+let humanScore = 0;
+let computerScore = 0;
+let round = 1;
+
 const body = document.body;
 
 const header = document.createElement("div");
@@ -49,32 +53,35 @@ function getComputerChoice(){
 
 }
 
-/* This function gets the option from the user using the prompt method and apply some validations for the input in order to get a correct option */
-
-// function getHumanChoice(){
-
-//     const userChoice = this.textContent;
-//     showOption.textContent = userChoice;
-//     // if(userChoice.tagName == "button")
-//     // {
-//     //     screen.textContent = userChoice;
-//     // }
-//     console.log(userChoice); 
-//     return userChoice;
-
-// }
-
-/* Declaration of two variables that will be receiving the return values from getComputerChoice and getHumanChoice functions */ 
-
-// const humanSelection = getHumanChoice();
-//const computerSelection = getComputerChoice();
-
 /* This function allows to play the game by 5 rounds, keeps track of the scores(human and computer) and declares a winner at the end or a draw if apply */
 
 function playGame(humanChoice, computerChoice){
 
-    let humanScore = 0;
-    let computerScore = 0;
+    const showRound = document.createElement("p");
+    const showWinner = document.createElement("p");
+    const showUser = document.createElement("p");
+    const showPC = document.createElement("p");
+    const showUserScore = document.createElement("p");
+    const showPcScore = document.createElement("p");
+    const showFinalWinner = document.createElement("p");
+
+    if(round>5){
+
+        if(humanScore>computerScore){
+            console.log("%cCongratulations. You are the winner!", "color: lime");
+            showFinalWinner.textContent = "Congratulations. You are the winner!";
+            container.appendChild(showWinner);
+        } else if(humanScore<computerScore){
+            console.log("%cYou lost. Please try again.", "color: red")
+            showFinalWinner.textContent = "You lost. Please try again.";
+            container.appendChild(showWinner);
+        } else {
+                console.log("This is a draw. Try again.")
+                showFinalWinner.textContent = "This is a draw. Try again.";
+                container.appendChild(showWinner);
+        }
+
+    } else {
 
     const userChoice = this.textContent;
     showOption.textContent = userChoice;
@@ -87,116 +94,85 @@ function playGame(humanChoice, computerChoice){
 
     console.log("Please select your option");
 
-    // let round = 1;
+    console.log("%cThis is round number #" + round, "color: blue");
+    showRound.textContent = "This is round number: " + round;
+    container.appendChild(showRound);  
+    container.appendChild(showWinner);
+    container.appendChild(showUser);  
+    container.appendChild(showPC);
+    container.appendChild(showUserScore);  
+    container.appendChild(showPcScore);
+    container.appendChild(showFinalWinner);             
 
-    // while(round<=5){
-
-        //console.log("%cThis is round number #" + round, "color: blue");
-        //const showRound = document.createElement("p");
-        const showWinner = document.createElement("p");
-        const showUser = document.createElement("p");
-        const showPC = document.createElement("p");
-        const showUserScore = document.createElement("p");
-        const showPcScore = document.createElement("p");
-        const showFinalWinner = document.createElement("p");
-        //showRound.textContent = "This is round number: " + round;
-        //container.appendChild(showRound);  
-        container.appendChild(showWinner);
-        container.appendChild(showUser);  
-        container.appendChild(showPC);
-        container.appendChild(showUserScore);  
-        container.appendChild(showPcScore);
-        container.appendChild(showFinalWinner);             
-
-        if(humanChoice==="Rock" && computerChoice==="Scissors"){
+    if(humanChoice==="Rock" && computerChoice==="Scissors"){
         console.log("%cYou win! Rock beats Scissors", "color: lime");
         console.log("");
         showWinner.textContent = "You win! Rock beats Scissors";
         humanScore++;
-        }
+    }
 
-        else if(humanChoice==="Rock" && computerChoice==="Paper"){
+    else if(humanChoice==="Rock" && computerChoice==="Paper"){
         console.log("%cYou lose! Paper beats Rock", "color: red");
         console.log("");
         showWinner.textContent = "You lose! Paper beats Rock";
         computerScore++;
-        }
+    }
 
-        else if(humanChoice==="Paper" && computerChoice==="Rock"){
+    else if(humanChoice==="Paper" && computerChoice==="Rock"){
         console.log("%cYou Win! Paper beats Rock", "color: lime");
         console.log("");
         showWinner.textContent = "You Win! Paper beats Rock";
         humanScore++;
-        }
+    }
 
-        else if(humanChoice==="Paper" && computerChoice==="Scissors"){
+    else if(humanChoice==="Paper" && computerChoice==="Scissors"){
         console.log("%cYou lose! Scissors beats Paper", "color: red");
         console.log("");
         showWinner.textContent = "You lose! Scissors beats Paper";
         computerScore++;
-        }
+    }
 
-        else if(humanChoice==="Scissors" && computerChoice==="Paper"){
+    else if(humanChoice==="Scissors" && computerChoice==="Paper"){
         console.log("%cYou Win! Scissors beats Paper", "color: lime");
         console.log("");
         showWinner.textContent = "You Win! Scissors beats Paper";
         humanScore++;
-        }
+    }
 
-        else if(humanChoice==="Scissors" && computerChoice==="Rock"){
+    else if(humanChoice==="Scissors" && computerChoice==="Rock"){
         console.log("%cYou lose! Rock beats Scissors", "color: red");
         console.log("");
         showWinner.textContent = "You lose! Rock beats Scissors";
         computerScore++;
-        }
+    }
 
-        else{
+    else{
         console.log("This is a draw! Nobody wins")
         console.log("");
         showWinner.textContent = "This is a draw! Nobody wins";
-        }
+    }
 
-        console.log("Your choice was: " + humanChoice);
-        showUser.textContent = "Your choice was: " + humanChoice;
+    console.log("Your choice was: " + humanChoice);
+    showUser.textContent = "Your choice was: " + humanChoice;
 
-        console.log("The choice from computer was: " + computerChoice);
-        showPC.textContent = "The choice from computer was: " + computerChoice;
+    console.log("The choice from computer was: " + computerChoice);
+    showPC.textContent = "The choice from computer was: " + computerChoice;
 
-        console.log("");
+    console.log("");
     
-        console.log("Your score is: " + humanScore);
-        showUserScore.textContent = "Your score is: " + humanScore;
+    console.log("Your score is: " + humanScore);
+    showUserScore.textContent = "Your score is: " + humanScore;
     
-        console.log("Score for computer is: " + computerScore);
-        showPcScore.textContent = "Score for computer is: " + computerScore;
+    console.log("Score for computer is: " + computerScore);
+    showPcScore.textContent = "Score for computer is: " + computerScore;
 
-        console.log("");
+    console.log("");
 
-    //     round++;
+    round++;
 
-    //     if(round===6){
-
-    //         if(humanScore>computerScore){
-    //             console.log("%cCongratulations. You are the winner!", "color: lime");
-    //             showFinalWinner.textContent = "Congratulations. You are the winner!";
-    //         } else if(humanScore<computerScore){
-    //             console.log("%cYou lost. Please try again.", "color: red")
-    //             showFinalWinner.textContent = "You lost. Please try again.";
-    //         } else {
-    //             console.log("This is a draw. Try again.")
-    //             showFinalWinner.textContent = "This is a draw. Try again.";
-    //         }
-
-    //     } else {
-    //         humanChoice = getHumanChoice();
-    //         computerChoice = getComputerChoice();
-    //     }
-
-    // }
+    }
 
 }
-
-//playGame(humanSelection, computerSelection);
 
 
 
