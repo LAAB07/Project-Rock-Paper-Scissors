@@ -29,6 +29,22 @@ const showOption = document.createElement("p");
 
 container.appendChild(showOption);
 
+const showRound = document.createElement("p");
+const showWinner = document.createElement("p");
+const showUser = document.createElement("p");
+const showPC = document.createElement("p");
+const showUserScore = document.createElement("p");
+const showPcScore = document.createElement("p");
+const showFinalWinner = document.createElement("p");
+
+container.appendChild(showRound);  
+container.appendChild(showWinner);
+container.appendChild(showUser);  
+container.appendChild(showPC);
+container.appendChild(showUserScore);  
+container.appendChild(showPcScore);
+container.appendChild(showFinalWinner); 
+
 const buttons = document.querySelectorAll("button");
 
 buttons.forEach(button =>{
@@ -57,34 +73,29 @@ function getComputerChoice(){
 
 function playGame(humanChoice, computerChoice){
 
-    const showRound = document.createElement("p");
-    const showWinner = document.createElement("p");
-    const showUser = document.createElement("p");
-    const showPC = document.createElement("p");
-    const showUserScore = document.createElement("p");
-    const showPcScore = document.createElement("p");
-    const showFinalWinner = document.createElement("p");
+    if(round>4){
 
-    if(round>5){
+        container.appendChild(showFinalWinner);
+        buttons.forEach(button => button.disabled = true); 
 
         if(humanScore>computerScore){
             console.log("%cCongratulations. You are the winner!", "color: lime");
             showFinalWinner.textContent = "Congratulations. You are the winner!";
-            container.appendChild(showWinner);
+            //container.appendChild(showFinalWinner);
         } else if(humanScore<computerScore){
             console.log("%cYou lost. Please try again.", "color: red")
             showFinalWinner.textContent = "You lost. Please try again.";
-            container.appendChild(showWinner);
+            //container.appendChild(showFinalWinner);
         } else {
                 console.log("This is a draw. Try again.")
                 showFinalWinner.textContent = "This is a draw. Try again.";
-                container.appendChild(showWinner);
+                //container.appendChild(showFinalWinner);
         }
 
-    } else {
+    }
 
     const userChoice = this.textContent;
-    showOption.textContent = userChoice;
+    //showOption.textContent = userChoice;
 
     console.log(userChoice);
 
@@ -95,14 +106,7 @@ function playGame(humanChoice, computerChoice){
     console.log("Please select your option");
 
     console.log("%cThis is round number #" + round, "color: blue");
-    showRound.textContent = "This is round number: " + round;
-    container.appendChild(showRound);  
-    container.appendChild(showWinner);
-    container.appendChild(showUser);  
-    container.appendChild(showPC);
-    container.appendChild(showUserScore);  
-    container.appendChild(showPcScore);
-    container.appendChild(showFinalWinner);             
+    showRound.textContent = "This is round number: " + round;           
 
     if(humanChoice==="Rock" && computerChoice==="Scissors"){
         console.log("%cYou win! Rock beats Scissors", "color: lime");
@@ -153,24 +157,22 @@ function playGame(humanChoice, computerChoice){
     }
 
     console.log("Your choice was: " + humanChoice);
-    showUser.textContent = "Your choice was: " + humanChoice;
+    showUser.textContent = `Your choice was: ${humanChoice}`;
 
     console.log("The choice from computer was: " + computerChoice);
-    showPC.textContent = "The choice from computer was: " + computerChoice;
+    showPC.textContent = `The choice from computer was: ${computerChoice}`;
 
     console.log("");
     
     console.log("Your score is: " + humanScore);
-    showUserScore.textContent = "Your score is: " + humanScore;
+    showUserScore.textContent = `Your score is: ${humanScore}`;
     
     console.log("Score for computer is: " + computerScore);
-    showPcScore.textContent = "Score for computer is: " + computerScore;
+    showPcScore.textContent = `Score for computer is: ${computerScore}`;
 
     console.log("");
 
     round++;
-
-    }
 
 }
 
