@@ -73,27 +73,6 @@ function getComputerChoice(){
 
 function playGame(humanChoice, computerChoice){
 
-    if(round>4){
-
-        container.appendChild(showFinalWinner);
-        buttons.forEach(button => button.disabled = true); 
-
-        if(humanScore>computerScore){
-            console.log("%cCongratulations. You are the winner!", "color: lime");
-            showFinalWinner.textContent = "Congratulations. You are the winner!";
-            //container.appendChild(showFinalWinner);
-        } else if(humanScore<computerScore){
-            console.log("%cYou lost. Please try again.", "color: red")
-            showFinalWinner.textContent = "You lost. Please try again.";
-            //container.appendChild(showFinalWinner);
-        } else {
-                console.log("This is a draw. Try again.")
-                showFinalWinner.textContent = "This is a draw. Try again.";
-                //container.appendChild(showFinalWinner);
-        }
-
-    }
-
     const userChoice = this.textContent;
     //showOption.textContent = userChoice;
 
@@ -173,6 +152,27 @@ function playGame(humanChoice, computerChoice){
     console.log("");
 
     round++;
+
+    if(round===6){
+
+        container.appendChild(showFinalWinner);
+        buttons.forEach(button => button.disabled = true); 
+
+        if(humanScore>computerScore){
+            console.log("%cCongratulations. You are the winner!", "color: lime");
+            showFinalWinner.textContent = "Congratulations. You are the winner!";
+            //container.appendChild(showFinalWinner);
+        } else if(humanScore<computerScore){
+            console.log("%cYou lost. Please try again.", "color: red")
+            showFinalWinner.textContent = "You lost. Please try again.";
+            //container.appendChild(showFinalWinner);
+        } else {
+                console.log("This is a draw. Try again.")
+                showFinalWinner.textContent = "This is a draw. Try again.";
+                //container.appendChild(showFinalWinner);
+        }
+
+    }
 
 }
 
